@@ -43,6 +43,6 @@ dependencies {
 
     // Room components
     val roomVersion = "2.7.1"
-    implementation("androidx.room:room-runtime:$roomVersion")
-    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
 }
