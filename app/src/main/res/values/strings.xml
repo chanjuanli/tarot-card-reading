@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">FinalProject_TarrotCardReading</string>
+
+    <string name="tarot_title">Tarot Reading</string>
+
     
     <!-- Major Arcana Tarot Cards -->
 
@@ -112,4 +115,6 @@
     <string name="upright_world">Completion, integration, accomplishment, travel, wholeness, fulfillment</string>
     <string name="reversed_world">Incompletion, shortcuts, delays, lack of closure, stagnation, inability to finish</string>
     <string name="desc_world">You are reaching a place of fulfillment and completion. Celebrate your journey and achievements.</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="tarot_reading">Tarot Reading</string>
 </resources>
