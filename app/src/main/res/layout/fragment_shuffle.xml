@@ -8,31 +8,15 @@
     android:layout_height="match_parent"
     android:background="#212121">
 
-
-    <!-- Tip text -->
-    <TextView
-        android:id="@+id/shuffle_tip"
-        style="@style/TarotTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:maxWidth="320dp"
-        android:gravity="center"
-        android:text="@string/shuffling_cards"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Card spread area，和首页ImageView一样大 -->
+    <!-- Card spread area -->
     <FrameLayout
         android:id="@+id/card_spread_container"
-        android:layout_width="281dp"
+        android:layout_width="0dp"
         android:layout_height="382dp"
-        android:layout_marginTop="50dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/shuffle_tip"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="100dp" />
 
     <!-- Reading button -->
     <Button
@@ -40,13 +24,10 @@
         style="@style/TarotButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/reading"
-        android:visibility="gone"
-        android:layout_marginTop="40dp"
+        android:text="Select 3 cards"
         app:layout_constraintTop_toBottomOf="@id/card_spread_container"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

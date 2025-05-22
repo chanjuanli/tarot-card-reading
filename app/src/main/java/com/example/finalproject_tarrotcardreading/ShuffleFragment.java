@@ -4,6 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,7 @@ import android.util.TypedValue;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
@@ -42,6 +46,7 @@ public class ShuffleFragment extends Fragment {
     private static final int CARD_COUNT = 22;
     private static final int SHUFFLE_ANIM_CARD_COUNT = 15;
     private static final int ANIM_DURATION = 2500;
+    private static final float CARD_SCALE = 2.0f; // 变大一倍
 
     // Card selection tracking
     private List<ImageView> selectedCards = new ArrayList<>();
@@ -81,17 +86,15 @@ public class ShuffleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         ConstraintLayout root = view.findViewById(R.id.shuffle_root);
-        TextView tip = view.findViewById(R.id.shuffle_tip);
         FrameLayout cardSpread = view.findViewById(R.id.card_spread_container);
 
-
-        startEnhancedShuffleAnimation(root, cardSpread, tip);
+        startEnhancedShuffleAnimation(root, cardSpread);
     }
 
     /**
      * Creates and starts an enhanced shuffle animation similar to professional tarot apps
      */
-    private void startEnhancedShuffleAnimation(ConstraintLayout root, FrameLayout cardSpread, TextView tip) {
+    private void startEnhancedShuffleAnimation(ConstraintLayout root, FrameLayout cardSpread) {
         List<ImageView> animCards = new ArrayList<>();
         Random random = new Random();
 
@@ -106,15 +109,17 @@ public class ShuffleFragment extends Fragment {
             ImageView card = createAnimationCard();
 
             // Position cards in a scattered formation around center
-            float angle = (360f / SHUFFLE_ANIM_CARD_COUNT) * i + random.nextFloat() * 60 - 30;
-            float radius = 100 + random.nextFloat() * 200; // Random radius from center
+            int sideMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36, getResources().getDisplayMetrics());
+            int minX = sideMargin;
+            int maxX = screenWidth - sideMargin - card.getLayoutParams().width;
+            int minY = 0;
+            int maxY = screenHeight;
 
-            float x = (float) (centerX + radius * Math.cos(Math.toRadians(angle)));
-            float y = (float) (centerY + radius * Math.sin(Math.toRadians(angle)));
-
+            float x = minX + random.nextFloat() * (maxX - minX);
+            float y = minY + random.nextFloat() * (maxY - minY);
             card.setX(x - card.getLayoutParams().width / 2);
             card.setY(y - card.getLayoutParams().height / 2);
-            card.setRotation(random.nextFloat() * 360); // Random initial rotation
+            card.setRotation(0f);
             card.setAlpha(0.8f + random.nextFloat() * 0.2f); // Slight alpha variation
 
             root.addView(card);
@@ -136,14 +141,13 @@ public class ShuffleFragment extends Fragment {
 
                 // Show card selection interface
                 cardSpread.setVisibility(View.VISIBLE);
-                tip.setText("Select 3 cards for your reading");
 
                 // Wait for layout and setup horizontal cards
                 cardSpread.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                     @Override
                     public void onGlobalLayout() {
                         cardSpread.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                        setupHorizontalCardLayout(cardSpread, tip);
+                        setupHorizontalCardLayout(cardSpread);
                     }
                 });
             }
@@ -157,12 +161,14 @@ public class ShuffleFragment extends Fragment {
         ImageView card = new ImageView(getContext());
         card.setImageResource(R.drawable.cover);
 
-        int cardWidth = (int) (getResources().getDisplayMetrics().density * 70);
+        int cardWidth = (int) (getResources().getDisplayMetrics().density * 140);
         int cardHeight = (int) (cardWidth * 1.4f);
 
         ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams(cardWidth, cardHeight);
         card.setLayoutParams(lp);
-        card.setScaleType(ImageView.ScaleType.FIT_XY);
+        int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, getResources().getDisplayMetrics());
+        card.setPadding(padding, padding, padding, padding);
+        card.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
         return card;
     }
@@ -241,98 +247,131 @@ public class ShuffleFragment extends Fragment {
     }
 
     /**
-     * Sets up the horizontal card layout for selection
+     * Sets up the three-row card layout for selection - 卡牌叠加效果
      */
-    private static final float CARD_ASPECT_RATIO = 342f / 197f;
-    private void setupHorizontalCardLayout(FrameLayout cardSpread, TextView tip) {
+    private static final float CARD_ASPECT_RATIO = 684f / 394f;
+    private void setupHorizontalCardLayout(FrameLayout cardSpread) {
         int containerWidth = cardSpread.getWidth();
-        if (containerWidth == 0) {
-            containerWidth = getResources().getDisplayMetrics().widthPixels;
+        int containerHeight = cardSpread.getHeight();
+
+        // 三行分布
+        int[] cardsPerRow = {8, 7, 7};
+        int totalRows = cardsPerRow.length;
+        int cardIndex = 0;
+
+        // 边距
+        int sideMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
+        int availableWidth = containerWidth - 2 * sideMargin;
+
+        // 计算最大一行的牌数
+        int maxCardsInRow = 0;
+        for (int n : cardsPerRow) {
+            if (n > maxCardsInRow) maxCardsInRow = n;
         }
-        int cardWidth = (int) (containerWidth * 0.22f);
+
+        // 计算最大允许的卡牌宽度
+        int cardWidth = availableWidth / maxCardsInRow;
         int cardHeight = (int) (cardWidth * CARD_ASPECT_RATIO);
 
-        int spacing = Math.max((containerWidth - cardWidth) / (CARD_COUNT - 1), cardWidth / 4);
-        // 让牌排在FrameLayout的下半部分
-        int centerY = (int) (cardSpread.getHeight() * 0.65f);
+        // 行间距
+        int rowSpacing = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
 
-        for (int i = 0; i < CARD_COUNT; i++) {
-            ImageView card = new ImageView(getContext());
-            card.setImageResource(R.drawable.cover);
+        // 计算总高度，垂直居中
+        int totalHeight = totalRows * cardHeight + (totalRows - 1) * rowSpacing;
+        int offsetY = (containerHeight - totalHeight) / 2;
 
-            FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(cardWidth, cardHeight);
-            card.setLayoutParams(lp);
-            card.setScaleType(ImageView.ScaleType.FIT_XY);
+        for (int row = 0; row < totalRows; row++) {
+            int cardsInThisRow = cardsPerRow[row];
+            int rowTotalWidth = cardsInThisRow * cardWidth;
+            int startX = sideMargin + (availableWidth - rowTotalWidth) / 2;
+            int y = offsetY + row * (cardHeight + rowSpacing);
 
-            float x = i * spacing;
-            card.setX(Math.max(0, x));
-            card.setY(centerY);
-            card.setRotation((float)(Math.random() * 4 - 2));
+            for (int col = 0; col < cardsInThisRow && cardIndex < CARD_COUNT; col++, cardIndex++) {
+                ImageView card = new ImageView(getContext());
+                card.setImageResource(R.drawable.cover);
 
-            card.setClickable(true);
-            card.setTag(i);
-            card.setOnClickListener(v -> handleCardClick(card, tip));
+                FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(cardWidth, cardHeight);
+                card.setLayoutParams(lp);
+                card.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
-            cardSpread.addView(card);
+                int x = startX + col * cardWidth;
+                card.setX(x);
+                card.setY(y);
+                card.setRotation(0f);
+
+                card.setClickable(true);
+                card.setTag(cardIndex);
+                card.setOnClickListener(v -> handleCardClick(card));
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    card.setForeground(null);
+                }
+
+                cardSpread.addView(card);
+            }
         }
     }
 
     /**
-     * Handles card selection with visual feedback
+     * Handles card selection with very subtle visual feedback - 最小化移动效果
      */
-    private void handleCardClick(ImageView clickedCard, TextView tip) {
+    private void handleCardClick(ImageView clickedCard) {
         if (selectedCards.contains(clickedCard)) {
-            // 取消选中时的动画
             selectedCards.remove(clickedCard);
-
-            ObjectAnimator moveBack = ObjectAnimator.ofFloat(clickedCard, "translationY", 0f);
-            ObjectAnimator scaleBackX = ObjectAnimator.ofFloat(clickedCard, "scaleX", 1f);
-            ObjectAnimator scaleBackY = ObjectAnimator.ofFloat(clickedCard, "scaleY", 1f);
-            ObjectAnimator alphaBack = ObjectAnimator.ofFloat(clickedCard, "alpha", 1f);
-
-            AnimatorSet backSet = new AnimatorSet();
-            backSet.playTogether(moveBack, scaleBackX, scaleBackY, alphaBack);
-            backSet.setDuration(300);
-            backSet.start();
-
+            setCardUnselected(clickedCard);
         } else {
             if (selectedCards.size() < MAX_SELECTED_CARDS) {
-                // 选中卡牌时的动画
                 selectedCards.add(clickedCard);
-
-                float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, -12, getResources().getDisplayMetrics());
-
-                ObjectAnimator moveY = ObjectAnimator.ofFloat(clickedCard, "translationY", px);
-                ObjectAnimator scaleX = ObjectAnimator.ofFloat(clickedCard, "scaleX", 1.15f);
-                ObjectAnimator scaleY = ObjectAnimator.ofFloat(clickedCard, "scaleY", 1.15f);
-                ObjectAnimator alpha = ObjectAnimator.ofFloat(clickedCard, "alpha", 0.9f);
-
-                AnimatorSet animatorSet = new AnimatorSet();
-                animatorSet.playTogether(moveY, scaleX, scaleY, alpha);
-                animatorSet.setDuration(300);
-                animatorSet.start();
+                setCardSelected(clickedCard);
             }
         }
+        updateTipText();
+    }
 
-        updateTipText(tip);
+    private void setCardSelected(ImageView card) {
+        card.animate()
+                .scaleX(1.08f)
+                .scaleY(1.08f)
+                .setDuration(200)
+                .start();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            card.setForeground(ContextCompat.getDrawable(getContext(), R.drawable.card_selected_glow));
+        }
+        card.clearColorFilter();
+        card.setAlpha(1.0f);
+    }
+
+    private void setCardUnselected(ImageView card) {
+        card.animate()
+                .scaleX(1f)
+                .scaleY(1f)
+                .setDuration(200)
+                .start();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            card.setForeground(null);
+        }
+        card.clearColorFilter();
+        card.setAlpha(1.0f);
     }
 
     /**
      * Updates tip text based on selection
      */
-    private void updateTipText(TextView tip) {
+    private void updateTipText() {
         int selectedCount = selectedCards.size();
         Button btn = getView().findViewById(R.id.complete_reading_button);
 
+        btn.setVisibility(View.VISIBLE); // 按钮一直可见
+
         if (selectedCount == 0) {
-            tip.setText("Select 3 cards for your reading");
-            btn.setVisibility(View.GONE);
+            btn.setText("Select 3 cards");
+            btn.setEnabled(false);
         } else if (selectedCount < MAX_SELECTED_CARDS) {
-            tip.setText("Selected " + selectedCount + " cards, need " + (MAX_SELECTED_CARDS - selectedCount) + " more");
-            btn.setVisibility(View.GONE); // hide button
+            btn.setText("Selected " + selectedCount + " cards, need " + (MAX_SELECTED_CARDS - selectedCount) + " more");
+            btn.setEnabled(false);
         } else {
-            tip.setText("Perfect! " + MAX_SELECTED_CARDS + " cards selected");
-            btn.setVisibility(View.VISIBLE); //show button
+            btn.setText("Perfect! 3 cards selected\nClick to read");
+            btn.setEnabled(true);
             btn.setOnClickListener(v -> showCardReading());
         }
     }
@@ -341,4 +380,6 @@ public class ShuffleFragment extends Fragment {
 
     }
 }
+
+
 
