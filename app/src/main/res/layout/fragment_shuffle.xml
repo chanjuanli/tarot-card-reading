@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shuffle_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#212121">
+
+
+    <!-- Tip text -->
+    <TextView
+        android:id="@+id/shuffle_tip"
+        style="@style/TarotTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:maxWidth="320dp"
+        android:gravity="center"
+        android:text="@string/shuffling_cards"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Card spread area，和首页ImageView一样大 -->
+    <FrameLayout
+        android:id="@+id/card_spread_container"
+        android:layout_width="281dp"
+        android:layout_height="382dp"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/shuffle_tip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Reading button -->
+    <Button
+        android:id="@+id/complete_reading_button"
+        style="@style/TarotButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reading"
+        android:visibility="gone"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/card_spread_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.example.finalproject_tarrotcardreading;
 
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,16 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        // 绑定按钮点击事件
+        Button shuffleButton = findViewById(R.id.shuffle_button);
+        shuffleButton.setOnClickListener(v -> {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main, new ShuffleFragment())
+                    .addToBackStack(null)
+                    .commit();
         });
     }
 }
