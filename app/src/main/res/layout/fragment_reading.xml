@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#212121"
+    tools:context=".ReadingFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_home"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Card 1 -->
+            <TextView
+                android:id="@+id/card1_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="#FFD700"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                tools:text="The Fool" />
+
+            <TextView
+                android:id="@+id/card1_meaning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="16dp"
+                tools:text="Upright: New beginnings, innocence, spontaneity..." />
+
+            <TextView
+                android:id="@+id/card1_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#CCCCCC"
+                android:layout_marginBottom="32dp"
+                tools:text="You are ready for a new adventure..." />
+
+            <!-- Card 2 -->
+            <TextView
+                android:id="@+id/card2_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="#FFD700"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                tools:text="The Magician" />
+
+            <TextView
+                android:id="@+id/card2_meaning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="16dp"
+                tools:text="Upright: Manifestation, resourcefulness..." />
+
+            <TextView
+                android:id="@+id/card2_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#CCCCCC"
+                android:layout_marginBottom="32dp"
+                tools:text="You have the skills and resources..." />
+
+            <!-- Card 3 -->
+            <TextView
+                android:id="@+id/card3_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="#FFD700"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                tools:text="The High Priestess" />
+
+            <TextView
+                android:id="@+id/card3_meaning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="16dp"
+                tools:text="Upright: Intuition, sacred knowledge..." />
+
+            <TextView
+                android:id="@+id/card3_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#CCCCCC"
+                android:layout_marginBottom="32dp"
+                tools:text="You are encouraged to trust your intuition..." />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_home"
+        style="@style/TarotButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back_to_home"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

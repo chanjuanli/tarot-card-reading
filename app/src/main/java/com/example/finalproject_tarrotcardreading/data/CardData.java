@@ -4,6 +4,7 @@ import android.content.Context;
 import com.example.finalproject_tarrotcardreading.R;
 import java.util.ArrayList;
 import java.util.List;
+import com.example.finalproject_tarrotcardreading.data.Card;
 
 public class CardData {
     public static List<Card> getMajorArcanaCards(Context context) {

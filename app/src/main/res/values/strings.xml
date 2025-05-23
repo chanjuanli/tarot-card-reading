@@ -9,7 +9,11 @@
     <string name="tarot_reading">Tarot Reading</string>
     <string name="reading">Reading</string>
     <string name="select_3_cards">Select 3 cards</string>
+    <string name="interpret">Interpret</string>
+    <string name="back_to_home">Back to home</string>
 
+    <string name="card_meaning_format">Upright: %1$s\n\nReversed: %2$s</string>
+    <string name="card_description_format">%s</string>
 
     <!-- Major Arcana Tarot Cards -->
 

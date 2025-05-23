@@ -23,9 +23,14 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.finalproject_tarrotcardreading.data.Card;
+import com.example.finalproject_tarrotcardreading.data.CardData;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -377,7 +382,20 @@ public class ShuffleFragment extends Fragment {
     }
 
     private void showCardReading() {
+        // Create array of selected cards
+        List<Card> allCards = CardData.getMajorArcanaCards(requireContext());
+        Card[] selectedCardArray = new Card[selectedCards.size()];
+        for (int i = 0; i < selectedCards.size(); i++) {
+            ImageView cardView = selectedCards.get(i);
+            int cardIndex = (int) cardView.getTag();
+            selectedCardArray[i] = allCards.get(cardIndex);
+        }
 
+        // Navigate to ThreeCardsFragment
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArray("selected_cards", selectedCardArray);
+        NavHostFragment.findNavController(this)
+            .navigate(R.id.action_shuffleFragment_to_threeCardsFragment, bundle);
     }
 }
 

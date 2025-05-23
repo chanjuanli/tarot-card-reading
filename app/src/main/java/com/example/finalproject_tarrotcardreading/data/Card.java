@@ -1,10 +1,12 @@
 package com.example.finalproject_tarrotcardreading.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "cards")
-public class Card {
+public class Card implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     
@@ -18,14 +20,55 @@ public class Card {
 
     public Card(String number, String name, int imageResource, String uprightMeaning, 
                 String reversedMeaning, String description) {
-        this.number = number;
-        this.name = name;
+        this.number = number != null ? number : "";
+        this.name = name != null ? name : "";
         this.imageResource = imageResource;
-        this.uprightMeaning = uprightMeaning;
-        this.reversedMeaning = reversedMeaning;
-        this.description = description;
+        this.uprightMeaning = uprightMeaning != null ? uprightMeaning : "";
+        this.reversedMeaning = reversedMeaning != null ? reversedMeaning : "";
+        this.description = description != null ? description : "";
         this.isReversed = false;
     }
+
+    // Parcelable实现
+    protected Card(Parcel in) {
+        id = in.readInt();
+        number = in.readString();
+        name = in.readString();
+        imageResource = in.readInt();
+        uprightMeaning = in.readString();
+        reversedMeaning = in.readString();
+        description = in.readString();
+        isReversed = in.readByte() != 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(number);
+        dest.writeString(name);
+        dest.writeInt(imageResource);
+        dest.writeString(uprightMeaning);
+        dest.writeString(reversedMeaning);
+        dest.writeString(description);
+        dest.writeByte((byte) (isReversed ? 1 : 0));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Card> CREATOR = new Creator<Card>() {
+        @Override
+        public Card createFromParcel(Parcel in) {
+            return new Card(in);
+        }
+
+        @Override
+        public Card[] newArray(int size) {
+            return new Card[size];
+        }
+    };
 
     // Getters and Setters
     public int getId() {
@@ -90,5 +133,10 @@ public class Card {
 
     public void setReversed(boolean reversed) {
         isReversed = reversed;
+    }
+
+    // 兼容你所有用法
+    public int getImageResId() {
+        return imageResource;
     }
 } 

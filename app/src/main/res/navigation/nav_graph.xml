@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.finalproject_tarrotcardreading.MainFragment"
+        android:label="MainFragment">
+        <action
+            android:id="@+id/action_mainFragment_to_shuffleFragment"
+            app:destination="@id/shuffleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/shuffleFragment"
+        android:name="com.example.finalproject_tarrotcardreading.ShuffleFragment"
+        android:label="ShuffleFragment">
+        <action
+            android:id="@+id/action_shuffleFragment_to_threeCardsFragment"
+            app:destination="@id/threeCardsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/threeCardsFragment"
+        android:name="com.example.finalproject_tarrotcardreading.ThreeCardsFragment"
+        android:label="ThreeCardsFragment">
+        <argument
+            android:name="selected_cards"
+            app:argType="com.example.finalproject_tarrotcardreading.data.Card[]"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_threeCardsFragment_to_readingFragment"
+            app:destination="@id/readingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/readingFragment"
+        android:name="com.example.finalproject_tarrotcardreading.ReadingFragment"
+        android:label="ReadingFragment">
+        <argument
+            android:name="selected_cards"
+            app:argType="com.example.finalproject_tarrotcardreading.data.Card[]"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_readingFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>
