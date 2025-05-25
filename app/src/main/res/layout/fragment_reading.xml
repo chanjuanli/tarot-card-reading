@@ -18,97 +18,184 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="50dp">
 
             <!-- Card 1 -->
-            <TextView
-                android:id="@+id/card1_title"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#FFD700"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                tools:text="The Fool" />
-
-            <TextView
-                android:id="@+id/card1_meaning"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#FFFFFF"
                 android:layout_marginBottom="16dp"
-                tools:text="Upright: New beginnings, innocence, spontaneity..." />
+                app:cardElevation="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="#2C2C2C">
 
-            <TextView
-                android:id="@+id/card1_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#CCCCCC"
-                android:layout_marginBottom="32dp"
-                tools:text="You are ready for a new adventure..." />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/card1_image"
+                        android:layout_width="80dp"
+                        android:layout_height="120dp"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="@string/card_image_description" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:id="@+id/card1_title"
+                            style="@style/TarotTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:textColor="#FFD700"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/card1_meaning"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/card1_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="#CCCCCC" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Card 2 -->
-            <TextView
-                android:id="@+id/card2_title"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#FFD700"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                tools:text="The Magician" />
-
-            <TextView
-                android:id="@+id/card2_meaning"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#FFFFFF"
                 android:layout_marginBottom="16dp"
-                tools:text="Upright: Manifestation, resourcefulness..." />
+                app:cardElevation="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="#2C2C2C">
 
-            <TextView
-                android:id="@+id/card2_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#CCCCCC"
-                android:layout_marginBottom="32dp"
-                tools:text="You have the skills and resources..." />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/card2_image"
+                        android:layout_width="80dp"
+                        android:layout_height="120dp"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="@string/card_image_description" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:id="@+id/card2_title"
+                            style="@style/TarotTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:textColor="#FFD700"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/card2_meaning"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/card2_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="#CCCCCC" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Card 3 -->
-            <TextView
-                android:id="@+id/card3_title"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#FFD700"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                tools:text="The High Priestess" />
-
-            <TextView
-                android:id="@+id/card3_meaning"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#FFFFFF"
                 android:layout_marginBottom="16dp"
-                tools:text="Upright: Intuition, sacred knowledge..." />
+                app:cardElevation="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="#2C2C2C">
 
-            <TextView
-                android:id="@+id/card3_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#CCCCCC"
-                android:layout_marginBottom="32dp"
-                tools:text="You are encouraged to trust your intuition..." />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/card3_image"
+                        android:layout_width="80dp"
+                        android:layout_height="120dp"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="@string/card_image_description" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:id="@+id/card3_title"
+                            style="@style/TarotTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:textColor="#FFD700"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/card3_meaning"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/card3_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="#CCCCCC"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
-
     </ScrollView>
 
     <Button

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ImageView;
 import androidx.navigation.fragment.NavHostFragment;
 import android.util.Log;
 import android.os.Parcelable;
@@ -68,6 +69,7 @@ public class ReadingFragment extends Fragment {
         TextView titleView = view.findViewById(getResId("card" + cardNumber + "_title", R.id.class));
         TextView meaningView = view.findViewById(getResId("card" + cardNumber + "_meaning", R.id.class));
         TextView descriptionView = view.findViewById(getResId("card" + cardNumber + "_description", R.id.class));
+        ImageView imageView = view.findViewById(getResId("card" + cardNumber + "_image", R.id.class));
 
         // Set card information
         titleView.setText(card.getName());
@@ -76,6 +78,9 @@ public class ReadingFragment extends Fragment {
                 card.getReversedMeaning()));
         descriptionView.setText(getString(R.string.card_description_format,
                 card.getDescription()));
+
+        //set image
+        imageView.setImageResource(card.getImageResId());
     }
 
     private int getResId(String resName, Class<?> c) {
