@@ -252,7 +252,7 @@ public class ShuffleFragment extends Fragment {
     }
 
     /**
-     * Sets up the three-row card layout for selection - 卡牌叠加效果
+     * Sets up the three-row card layout for selection
      */
     private static final float CARD_ASPECT_RATIO = 684f / 394f;
     private void setupHorizontalCardLayout(FrameLayout cardSpread) {
@@ -366,21 +366,20 @@ public class ShuffleFragment extends Fragment {
         int selectedCount = selectedCards.size();
         Button btn = getView().findViewById(R.id.complete_reading_button);
 
-        btn.setVisibility(View.VISIBLE); // 按钮一直可见
+        btn.setVisibility(View.VISIBLE);
 
         if (selectedCount == 0) {
-            btn.setText("Select 3 cards");
+            btn.setText(getString(R.string.select_3_cards_tip));
             btn.setEnabled(false);
         } else if (selectedCount < MAX_SELECTED_CARDS) {
-            btn.setText("Selected " + selectedCount + " cards, need " + (MAX_SELECTED_CARDS - selectedCount) + " more");
+            btn.setText(getString(R.string.selected_cards_tip, selectedCount, MAX_SELECTED_CARDS - selectedCount));
             btn.setEnabled(false);
         } else {
-            btn.setText("Perfect! 3 cards selected\nClick to read");
+            btn.setText(getString(R.string.perfect_3_selected));
             btn.setEnabled(true);
             btn.setOnClickListener(v -> showCardReading());
         }
     }
-
     private void showCardReading() {
         // Create array of selected cards
         List<Card> allCards = CardData.getMajorArcanaCards(requireContext());

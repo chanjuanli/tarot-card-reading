@@ -24,7 +24,7 @@
         style="@style/TarotButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select 3 cards"
+        android:text="@string/select_3_cards_tip"
         app:layout_constraintTop_toBottomOf="@id/card_spread_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

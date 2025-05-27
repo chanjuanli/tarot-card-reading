@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.example.finalproject_tarrotcardreading.data.LocaleHelper;
+
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,6 +74,16 @@ public class MainFragment extends Fragment {
         shuffleButton.setOnClickListener(v -> {
             androidx.navigation.fragment.NavHostFragment.findNavController(this)
                 .navigate(R.id.action_mainFragment_to_shuffleFragment);
+        });
+
+        Button btnSwitchLanguage = view.findViewById(R.id.btn_switch_language);
+        btnSwitchLanguage.setOnClickListener(v -> {
+            if (Locale.getDefault().getLanguage().startsWith("zh")) {
+                LocaleHelper.setLocale(requireActivity(), "en");
+            } else {
+                LocaleHelper.setLocale(requireActivity(), "zh");
+            }
+            requireActivity().recreate();
         });
     }
 }

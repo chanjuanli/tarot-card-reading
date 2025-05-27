@@ -30,7 +30,6 @@ public class ThreeCardsFragment extends Fragment {
     private Card[] selectedCards;
     private ImageView card2;
 
-    // TODO: Rename and change types of parameters
 
 
     public ThreeCardsFragment() {
