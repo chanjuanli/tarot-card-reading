@@ -1,0 +1,134 @@
+<resources>
+    <string name="app_name">塔罗牌占卜</string>
+
+    <string name="tarot_title">塔罗牌占卜</string>
+
+    <string name="hello_blank_fragment">你好，空白片段</string>
+    <string name="shuffling_cards">正在洗牌…</string>
+    <string name="shuffle">洗牌</string>
+    <string name="tarot_reading">塔罗解读</string>
+    <string name="reading">解读</string>
+
+    <string name="select_3_cards_tip">请选择三张牌</string>
+    <string name="selected_cards_tip">已选 %1$d 张，还需 %2$d 张</string>
+    <string name="perfect_3_selected">完美！已选3张牌\n点击解读</string>
+    <string name="interpret">解读</string>
+    <string name="back_to_home">返回首页</string>
+
+    <string name="card_meaning_format">正位：%1$s&#10;&#10;逆位：%2$s</string>
+    <string name="card_description_format">%s</string>
+
+    <!-- Major Arcana Tarot Cards -->
+
+    <string name="card_fool">愚者</string>
+    <string name="upright_fool">新的开始、天真、即兴、自由精神、冒险、新旅程、潜力</string>
+    <string name="reversed_fool">鲁莽、粗心、冲动、愚蠢、幼稚、冒险过度</string>
+    <string name="desc_fool">你已准备好迎接新的冒险。相信自己，以乐观的心态拥抱未知。</string>
+
+    <string name="card_magician">魔术师</string>
+    <string name="upright_magician">显化、资源丰富、力量、灵感行动、创造、天赋、能力</string>
+    <string name="reversed_magician">操控、计划不周、未被发掘的才能、潜能、缺乏安全感、缺乏计划</string>
+    <string name="desc_magician">你拥有实现目标的技能和资源。集中精力，采取有灵感的行动。</string>
+
+    <string name="card_high_priestess">女祭司</string>
+    <string name="upright_high_priestess">直觉、神圣知识、女性能量、潜意识、神秘、灵性</string>
+    <string name="reversed_high_priestess">秘密、与直觉脱节、退缩、沉默、信息被隐瞒</string>
+    <string name="desc_high_priestess">相信你的直觉，倾听内心的声音。</string>
+
+    <string name="card_empress">女皇</string>
+    <string name="upright_empress">女性、魅力、大自然、关爱、丰盛、创造力、孕育、母性</string>
+    <string name="reversed_empress">创造力受阻、依赖他人、忽视、溺爱、缺乏成长、空虚</string>
+    <string name="desc_empress">你被丰盛和创造力包围。关爱自己和身边的人。</string>
+
+    <string name="card_emperor">皇帝</string>
+    <string name="upright_emperor">权威、建立、结构、父性、稳定、保护、理性、逻辑</string>
+    <string name="reversed_emperor">专制、控制欲过强、僵化、缺乏同情心、不成熟</string>
+    <string name="desc_emperor">你需要掌控局面并提供结构。明智地运用权威，自信地领导。</string>
+
+    <string name="card_hierophant">教皇</string>
+    <string name="upright_hierophant">精神智慧、宗教信仰、传统、遵从、教育、知识、制度</string>
+    <string name="reversed_hierophant">反叛、颠覆、自由、个人信仰、挑战现状</string>
+    <string name="desc_hierophant">你将受益于传统和精神指导。向值得信赖的人寻求智慧。</string>
+
+    <string name="card_lovers">恋人</string>
+    <string name="upright_lovers">爱情、和谐、关系、价值观一致、选择、结合、伙伴关系</string>
+    <string name="reversed_lovers">不和谐、失衡、价值观不一致、疏离、错误选择</string>
+    <string name="desc_lovers">你正面临重要的爱情或价值选择。选择能带来真正幸福的道路。</string>
+
+    <string name="card_chariot">战车</string>
+    <string name="upright_chariot">掌控、意志力、成功、行动、决心、克服障碍、专注</string>
+    <string name="reversed_chariot">失控、迷失方向、攻击性、失败、被障碍压倒</string>
+    <string name="desc_chariot">你有决心克服障碍。保持专注，继续前进。</string>
+
+    <string name="card_strength">力量</string>
+    <string name="upright_strength">内在力量、勇气、说服力、影响力、同情心、耐心、温和的控制</string>
+    <string name="reversed_strength">自我怀疑、软弱、缺乏自律、不安全感、情绪化、脆弱</string>
+    <string name="desc_strength">你拥有强大的内在力量。以耐心和同情心面对挑战。</string>
+
+    <string name="card_hermit">隐者</string>
+    <string name="upright_hermit">自我探索、内省、独处、内在指引、灵性启蒙</string>
+    <string name="reversed_hermit">孤立、孤独、退缩、被拒绝、流放、被遗弃</string>
+    <string name="desc_hermit">你需要时间进行内省。向内寻找答案，相信自己的指引。</string>
+
+    <string name="card_wheel_of_fortune">命运之轮</string>
+    <string name="upright_wheel_of_fortune">好运、因果、生命循环、命运、转折点、变化、幸运</string>
+    <string name="reversed_wheel_of_fortune">厄运、抗拒变化、打破循环、意外事件、低谷</string>
+    <string name="desc_wheel_of_fortune">你正进入好运和积极变化的时期。相信顺其自然，拥抱新机遇。</string>
+
+    <string name="card_justice">正义</string>
+    <string name="upright_justice">正义、公平、真理、因果、法律、平衡、正直</string>
+    <string name="reversed_justice">不公、缺乏责任、欺骗、不平衡、偏见</string>
+    <string name="desc_justice">你需要以公平和正直行事。基于真理和平衡做决定。</string>
+
+    <string name="card_hanged_man">倒吊人</string>
+    <string name="upright_hanged_man">臣服、放下、新视角、启蒙、牺牲、释放、殉道</string>
+    <string name="reversed_hanged_man">拖延、抗拒、犹豫、延迟、感到被困</string>
+    <string name="desc_hanged_man">你需要放下并以新视角看待事物。臣服会带来洞见。</string>
+
+    <string name="card_death">死神</string>
+    <string name="upright_death">结束、变化、转变、过渡、放下、释放</string>
+    <string name="reversed_death">抗拒变化、无法释怀、停滞、腐朽、害怕新开始</string>
+    <string name="desc_death">你正经历转变。放下过去，迎接新生。</string>
+
+    <string name="card_temperance">节制</string>
+    <string name="upright_temperance">平衡、节制、耐心、目标、和谐、寻找中庸</string>
+    <string name="reversed_temperance">失衡、过度、缺乏远见、不和、急躁、鲁莽</string>
+    <string name="desc_temperance">你正在寻找生活的平衡。耐心和节制带来和谐。</string>
+
+    <string name="card_devil">恶魔</string>
+    <string name="upright_devil">阴影自我、依赖、上瘾、束缚、性、物质主义</string>
+    <string name="reversed_devil">挣脱、释放、恢复掌控、重获力量、超脱</string>
+    <string name="desc_devil">你可能被不健康的模式束缚。认清阻碍你的事物，重获力量。</string>
+
+    <string name="card_tower">高塔</string>
+    <string name="upright_tower">突变、动荡、混乱、启示、觉醒、真相、毁灭</string>
+    <string name="reversed_tower">避免灾难、害怕变化、拖延必要的崩溃、抗拒转变</string>
+    <string name="desc_tower">你正面临突如其来的变化。拥抱真相，让转变发生。</string>
+
+    <string name="card_star">星星</string>
+    <string name="upright_star">希望、信念、目标、重生、灵性、灵感、宁静</string>
+    <string name="reversed_star">缺乏信心、绝望、沮丧、自我疏离、不安全感</string>
+    <string name="desc_star">你充满希望和灵感。相信自己，期待新的开始。</string>
+
+    <string name="card_moon">月亮</string>
+    <string name="upright_moon">幻象、恐惧、焦虑、潜意识、直觉、梦境、未知</string>
+    <string name="reversed_moon">释放恐惧、压抑情绪浮现、清晰、克服欺骗</string>
+    <string name="desc_moon">你正处于不确定之中。相信直觉，警惕幻象。</string>
+
+    <string name="card_sun">太阳</string>
+    <string name="upright_sun">成功、喜悦、丰盛、乐观、活力、幸福、清晰、启蒙</string>
+    <string name="reversed_sun">暂时的沮丧、缺乏成功、悲观、悲伤、判断模糊</string>
+    <string name="desc_sun">你正经历喜悦和成功。庆祝成就，分享快乐。</string>
+
+    <string name="card_judgement">审判</string>
+    <string name="upright_judgement">审判、重生、内在召唤、赦免、觉醒、更新、目标</string>
+    <string name="reversed_judgement">自我怀疑、拒绝自省、缺乏自知、未吸取教训</string>
+    <string name="desc_judgement">你正在觉醒新的目标。反思过去，拥抱真正的召唤。</string>
+
+    <string name="card_world">世界</string>
+    <string name="upright_world">完成、整合、成就、旅行、圆满、满足</string>
+    <string name="reversed_world">未完成、走捷径、延迟、缺乏结局、停滞、不善终</string>
+    <string name="desc_world">你正达到圆满和完成。庆祝你的旅程和成就。</string>
+
+    <string name="card_image_description">塔罗牌图片</string>
+</resources>
