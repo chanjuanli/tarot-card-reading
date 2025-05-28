@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Tarot Card Reading App Documentation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f8f9fa; }
+        .header { background-color: #2c3e50; color: white; padding: 20px; margin-bottom: 20px; }
+        .container { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .class-summary { margin-bottom: 30px; }
+        .class-name { color: #2c3e50; font-size: 1.5em; font-weight: bold; margin-bottom: 10px; }
+        .class-description { margin-bottom: 15px; color: #555; }
+        .method-list { margin-left: 20px; }
+        .method-name { color: #8b4513; font-weight: bold; }
+        .package-link { color: #0066cc; text-decoration: none; }
+        .package-link:hover { text-decoration: underline; }
+        .navigation { background-color: #ecf0f1; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Tarot Card Reading App</h1>
+    <h2>API Documentation</h2>
+    <p>Generated for Final Project Submission</p>
+</div>
+
+<div class="navigation">
+    <strong>Packages:</strong>
+    <a href="#main-package" class="package-link">com.example.finalproject_tarrotcardreading</a> |
+    <a href="#data-package" class="package-link">com.example.finalproject_tarrotcardreading.data</a>
+</div>
+
+<div class="container">
+    <h2 id="main-package">Package: com.example.finalproject_tarrotcardreading</h2>
+
+    <div class="class-summary">
+        <div class="class-name">MainActivity</div>
+        <div class="class-description">
+            Main activity for the Tarot Card Reading application. This activity serves as the entry point
+            and navigation host for the application. It handles locale configuration and provides the main
+            user interface container.
+        </div>
+        <div class="method-list">
+            <strong>Methods:</strong><br>
+            <span class="method-name">onCreate(Bundle)</span> - Called when the activity is first created<br>
+            <span class="method-name">attachBaseContext(Context)</span> - Attaches base context with locale configuration
+        </div>
+    </div>
+
+    <div class="class-summary">
+        <div class="class-name">MainFragment</div>
+        <div class="class-description">
+            Main fragment that displays the welcome screen of the Tarot Card Reading application.
+            This fragment provides the initial user interface with navigation to the card shuffling screen.
+        </div>
+        <div class="method-list">
+            <strong>Methods:</strong><br>
+            <span class="method-name">onCreate(Bundle)</span> - Initializes the fragment's state<br>
+            <span class="method-name">onCreateView(LayoutInflater, ViewGroup, Bundle)</span> - Creates the view hierarchy<br>
+            <span class="method-name">onViewCreated(View, Bundle)</span> - Sets up event listeners and UI components
+        </div>
+    </div>
+
+    <div class="class-summary">
+        <div class="class-name">ShuffleFragment</div>
+        <div class="class-description">
+            Fragment responsible for displaying and managing the card shuffling interface.
+            Provides animated card shuffling effects and allows users to select three cards for reading.
+            Contains 587 lines of code with complex animation logic.
+        </div>
+        <div class="method-list">
+            <strong>Key Methods:</strong><br>
+            <span class="method-name">startEnhancedShuffleAnimation()</span> - Manages card shuffling animations<br>
+            <span class="method-name">handleCardClick(ImageView)</span> - Processes card selection events<br>
+            <span class="method-name">setupHorizontalCardLayout()</span> - Arranges cards in horizontal layout<br>
+            <span class="method-name">createAnimationCard()</span> - Creates individual animation card views
+        </div>
+    </div>
+
+    <div class="class-summary">
+        <div class="class-name">ThreeCardsFragment</div>
+        <div class="class-description">
+            Fragment that displays the three selected cards with 3D flip animations.
+            Manages the card reveal process and provides navigation to the reading interpretation.
+            Contains 216 lines of code focusing on card flip animations.
+        </div>
+        <div class="method-list">
+            <strong>Key Methods:</strong><br>
+            <span class="method-name">startFlipAnimation(ImageView, Card, long)</span> - Animates card flipping<br>
+            <span class="method-name">onViewCreated(View, Bundle)</span> - Initializes card display and animations
+        </div>
+    </div>
+
+    <div class="class-summary">
+        <div class="class-name">ReadingFragment</div>
+        <div class="class-description">
+            Fragment that displays the interpretation of the three selected tarot cards.
+            Shows card images, names, and detailed meanings for each position (Past, Present, Future).
+            Contains 194 lines of code for displaying card information.
+        </div>
+        <div class="method-list">
+            <strong>Key Methods:</strong><br>
+            <span class="method-name">displayCardInfo(View, Card, int)</span> - Displays individual card information<br>
+            <span class="method-name">onViewCreated(View, Bundle)</span> - Sets up the reading interface
+        </div>
+    </div>
+
+    <h2 id="data-package">Package: com.example.finalproject_tarrotcardreading.data</h2>
+
+    <div class="class-summary">
+        <div class="class-name">Card</div>
+        <div class="class-description">
+            Entity class representing a Tarot card with Room database annotations and Parcelable implementation.
+            Contains all card information including name, meaning, image resource, and descriptions.
+            Contains 343 lines of code with comprehensive card data structure.
+        </div>
+        <div class="method-list">
+            <strong>Key Methods:</strong><br>
+            <span class="method-name">Card(String, String, String, String, int)</span> - Constructor with all card properties<br>
+            <span class="method-name">writeToParcel(Parcel, int)</span> - Parcelable implementation for data passing<br>
+            <span class="method-name">getName(), getMeaning(), getImageResource()</span> - Getter methods for card properties
+        </div>
+    </div>
+
+    <div class="class-summary">
+        <div class="class-name">CardData</div>
+        <div class="class-description">
+            Factory class that creates and manages the collection of 22 Major Arcana tarot cards.
+            Implements singleton pattern and reads card data from string resources for internationalization.
+            Contains 198 lines of code with complete tarot deck initialization.
+        </div>
+        <div class="method-list">
+            <strong>Key Methods:</strong><br>
+            <span class="method-name">getAllCards(Context)</span> - Returns list of all 22 Major Arcana cards<br>
+            <span class="method-name">initializeCards(Context)</span> - Initializes card data from resources<br>
+            <span class="method-name">getRandomThreeCards()</span> - Selects three random cards for reading
+        </div>
+    </div>
+
+    <div class="class-summary">
+        <div class="class-name">LocaleHelper</div>
+        <div class="class-description">
+            Utility class for handling internationalization and locale management.
+            Supports switching between English and Chinese languages with proper context configuration.
+            Contains 90 lines of code for locale management.
+        </div>
+        <div class="method-list">
+            <strong>Key Methods:</strong><br>
+            <span class="method-name">setLocale(Context, String)</span> - Sets application locale<br>
+            <span class="method-name">getSavedLanguage(Context)</span> - Retrieves saved language preference
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ecf0f1;">
+        <h3>Project Summary</h3>
+        <p><strong>Total Classes:</strong> 8</p>
+        <p><strong>Total Lines of Code:</strong> ~1,635 lines</p>
+        <p><strong>Main Features:</strong></p>
+        <ul>
+            <li>Interactive tarot card reading with 22 Major Arcana cards</li>
+            <li>Animated card shuffling and selection interface</li>
+            <li>3D card flip animations for reveal effects</li>
+            <li>Bilingual support (English/Chinese)</li>
+            <li>Room database integration for card data persistence</li>
+            <li>Navigation component for seamless user flow</li>
+        </ul>
+        <p><strong>Architecture:</strong> MVVM pattern with Android Architecture Components</p>
+        <p><strong>Generated:</strong> December 2024</p>
+    </div>
+</div>
+</body>
+</html>
