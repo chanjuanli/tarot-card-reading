@@ -1,0 +1,112 @@
+@startuml
+'Tarot Card Reading App - Class Diagram (English Version)
+
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F8F9FA
+skinparam classBorderColor #28A745
+skinparam arrowColor #007BFF
+
+title Tarot Card Reading App - Class Diagram
+
+' Android Framework Classes
+abstract class Fragment
+abstract class AppCompatActivity
+
+' Main Application Class
+class MainActivity {
+  - NavController navController
+  + onCreate(Bundle)
+  + onSupportNavigateUp(): boolean
+}
+
+' Fragment Classes
+class MainFragment {
+  + onCreateView(): View
+  + onViewCreated(View, Bundle)
+  - navigateToShuffle()
+}
+
+class ShuffleFragment {
+  - List<Card> allCards
+  - Random random
+  - Handler animationHandler
+  + onCreateView(): View
+  + startShuffleAnimation()
+  + stopShuffleAndSelect()
+  + selectThreeCards(): Card[]
+}
+
+class ThreeCardsFragment {
+  - Card[] selectedCards
+  - ImageView card2
+  {static} + newInstance(Card[]): ThreeCardsFragment
+  + onCreate(Bundle)
+  + startFlipAnimation(ImageView, Card, long)
+}
+
+class ReadingFragment {
+  - Card[] selectedCards
+  {static} + newInstance(Card[]): ReadingFragment
+  + onCreate(Bundle)
+  + displayCardReading(Card, TextView, TextView, TextView)
+}
+
+' Data Layer Classes
+class Card {
+  - int id
+  - String number
+  - String name
+  - int imageResource
+  - String uprightMeaning
+  - String reversedMeaning
+  - String description
+  - boolean isReversed
+  + getName(): String
+  + getImageResource(): int
+  + getUprightMeaning(): String
+  + getReversedMeaning(): String
+  + isReversed(): boolean
+  + setReversed(boolean)
+}
+
+class CardData {
+  {static} + getAllCards(Context): List<Card>
+  {static} - createCard(Context, int, String, int): Card
+}
+
+class LocaleHelper {
+  {static} + switchLanguage(Context, String): Context
+  {static} + getSystemLanguage(): String
+}
+
+interface Parcelable
+
+' Inheritance Relationships
+AppCompatActivity <|-- MainActivity
+Fragment <|-- MainFragment
+Fragment <|-- ShuffleFragment
+Fragment <|-- ThreeCardsFragment
+Fragment <|-- ReadingFragment
+Parcelable <|.. Card
+
+' Navigation Flow
+MainActivity --> MainFragment : hosts
+MainFragment --> ShuffleFragment : navigate to
+ShuffleFragment --> ThreeCardsFragment : navigate to
+ThreeCardsFragment --> ReadingFragment : navigate to
+
+' Data Relationships
+ShuffleFragment ..> CardData : uses
+CardData ..> Card : creates
+ShuffleFragment --> Card : selects 3
+ThreeCardsFragment --> Card : animates
+ReadingFragment --> Card : interprets
+
+' Notes
+note top of MainActivity : Application Entry Point\nManages Navigation
+note right of Card : Tarot Card Data Model\nImplements Parcelable for transfer
+note bottom of CardData : Factory Pattern\nProvides 22 Major Arcana cards
+note left of LocaleHelper : Internationalization Support\nEnglish/Chinese switching
+
+@enduml
