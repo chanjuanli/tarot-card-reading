@@ -1,0 +1,64 @@
+@startuml SimpleTarotApp
+
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F8F9FA
+skinparam classBorderColor #28A745
+skinparam arrowColor #007BFF
+
+title 简化版 Tarot Card Reading App 类图
+
+class MainActivity {
+  + onCreate()
+}
+
+class MainFragment {
+  + onCreateView()
+}
+
+class ShuffleFragment {
+  - List<Card> allCards
+  + startShuffleAnimation()
+  + selectThreeCards()
+}
+
+class ThreeCardsFragment {
+  - Card[] selectedCards
+  + startFlipAnimation()
+}
+
+class ReadingFragment {
+  - Card[] selectedCards
+  + displayCardReading()
+}
+
+class Card {
+  - String name
+  - int imageResource
+  - String uprightMeaning
+  - String reversedMeaning
+  - boolean isReversed
+}
+
+class CardData {
+  {static} + getAllCards()
+}
+
+' 简单的流程关系
+MainActivity --> MainFragment
+MainFragment --> ShuffleFragment
+ShuffleFragment --> ThreeCardsFragment
+ThreeCardsFragment --> ReadingFragment
+
+' 数据关系
+ShuffleFragment ..> CardData
+CardData ..> Card
+ShuffleFragment --> Card : uses
+ThreeCardsFragment --> Card : animates
+ReadingFragment --> Card : displays
+
+note top of MainActivity : 应用入口
+note right of Card : 塔罗牌数据模型
+note bottom of CardData : 提供22张塔罗牌数据
+
+@enduml 

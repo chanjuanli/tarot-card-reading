@@ -1,0 +1,25 @@
+@startuml
+!theme plain
+
+title Tarot Card Reading App - Simple Class Diagram
+
+class MainActivity
+class MainFragment  
+class ShuffleFragment
+class ThreeCardsFragment
+class ReadingFragment
+class Card
+class CardData
+
+MainActivity ..> MainFragment
+MainFragment ..> ShuffleFragment  
+ShuffleFragment ..> ThreeCardsFragment
+ThreeCardsFragment ..> ReadingFragment
+
+ShuffleFragment ..> CardData
+CardData ..> Card
+ShuffleFragment ..> Card
+ThreeCardsFragment ..> Card
+ReadingFragment ..> Card
+
+@enduml 

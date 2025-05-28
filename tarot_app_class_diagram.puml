@@ -1,0 +1,134 @@
+@startuml TarotCardReadingApp
+
+!theme plain
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #333333
+skinparam arrowColor #666666
+
+title Tarot Card Reading App - Class Diagram
+
+package "Main Application" {
+    class MainActivity {
+        - NavController navController
+        + onCreate(Bundle)
+        + onSupportNavigateUp(): boolean
+    }
+}
+
+package "Fragments" {
+    abstract class Fragment
+    
+    class MainFragment {
+        + onCreateView(): View
+        + onViewCreated(View, Bundle)
+        - navigateToShuffle()
+    }
+    
+    class ShuffleFragment {
+        - List<Card> allCards
+        - Random random
+        - Handler animationHandler
+        + onCreateView(): View
+        + onViewCreated(View, Bundle)
+        - startShuffleAnimation()
+        - stopShuffleAndSelect()
+        - selectThreeCards(): Card[]
+    }
+    
+    class ThreeCardsFragment {
+        - Card[] selectedCards
+        - ImageView card2
+        {static} + newInstance(Card[]): ThreeCardsFragment
+        + onCreate(Bundle)
+        + onCreateView(): View
+        + onViewCreated(View, Bundle)
+        - startFlipAnimation(ImageView, Card, long)
+    }
+    
+    class ReadingFragment {
+        - Card[] selectedCards
+        {static} + newInstance(Card[]): ReadingFragment
+        + onCreate(Bundle)
+        + onCreateView(): View
+        + onViewCreated(View, Bundle)
+        - displayCardReading(Card, TextView, TextView, TextView)
+    }
+}
+
+package "Data Layer" {
+    class Card {
+        - int id
+        - String number
+        - String name
+        - int imageResource
+        - String uprightMeaning
+        - String reversedMeaning
+        - String description
+        - boolean isReversed
+        + Card(int, String, String, int, String, String, String)
+        + getId(): int
+        + getName(): String
+        + getImageResource(): int
+        + getUprightMeaning(): String
+        + getReversedMeaning(): String
+        + getDescription(): String
+        + isReversed(): boolean
+        + setReversed(boolean)
+        + writeToParcel(Parcel, int)
+        + createFromParcel(Parcel): Card
+    }
+    
+    class CardData {
+        {static} + getAllCards(Context): List<Card>
+        {static} - createCard(Context, int, String, int): Card
+    }
+    
+    class LocaleHelper {
+        {static} + switchLanguage(Context, String): Context
+        {static} + getSystemLanguage(): String
+    }
+}
+
+package "Android Framework" {
+    interface Parcelable
+    class AppCompatActivity
+    class Context
+    class Bundle
+}
+
+' Inheritance relationships
+Fragment <|-- MainFragment
+Fragment <|-- ShuffleFragment
+Fragment <|-- ThreeCardsFragment
+Fragment <|-- ReadingFragment
+AppCompatActivity <|-- MainActivity
+Parcelable <|.. Card
+
+' Composition relationships
+MainActivity *-- Fragment : hosts
+ShuffleFragment *-- Card : uses
+ThreeCardsFragment *-- Card : animates
+ReadingFragment *-- Card : interprets
+
+' Dependencies
+ShuffleFragment ..> CardData : getAllCards()
+CardData ..> Card : creates
+CardData ..> Context : reads strings
+LocaleHelper ..> Context : modifies locale
+
+' Data flow
+ShuffleFragment --> ThreeCardsFragment : Card[]
+ThreeCardsFragment --> ReadingFragment : Card[]
+
+' Navigation flow
+MainFragment --> ShuffleFragment : navigate
+ShuffleFragment --> ThreeCardsFragment : navigate
+ThreeCardsFragment --> ReadingFragment : navigate
+
+note top of MainActivity : Entry point\nManages navigation
+note top of Card : Parcelable for\nfragment data transfer
+note top of CardData : Factory pattern\nReads from strings.xml
+note top of LocaleHelper : Internationalization\nEnglish/Chinese support
+
+@enduml 
