@@ -16,17 +16,16 @@ import java.util.Locale;
 
 /**
  * Main home screen fragment for the Tarot Card Reading application.
- * 
+ * <p>
  * This fragment displays the application's welcome screen with the main
  * tarot deck image, shuffle button, and language switching capability.
  * It serves as the entry point for users to begin a tarot reading session.
- * 
- * @author YourName
+ *
+ * @author Chanjuan Li
  * @version 1.0
- * @since API level 1
- * 
  * @see com.example.finalproject_tarrotcardreading.data.LocaleHelper
  * @see androidx.navigation.fragment.NavHostFragment
+ * @since API level 1
  */
 public class MainFragment extends Fragment {
 
@@ -40,7 +39,7 @@ public class MainFragment extends Fragment {
 
     /**
      * Required empty public constructor for Fragment instantiation.
-     * 
+     * <p>
      * This constructor is required by the Android framework for proper
      * fragment lifecycle management and recreation during configuration changes.
      */

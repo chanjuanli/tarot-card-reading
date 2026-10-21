@@ -8,31 +8,30 @@ import com.example.finalproject_tarrotcardreading.data.Card;
 
 /**
  * Static data provider class for Tarot card information and creation.
- *
+ * <p>
  * The class uses the Context parameter to access localized string resources,
  * ensuring that card names, meanings, and descriptions are displayed in the
  * user's preferred language.
- * 
+ * <p>
  * Usage Example:
  * <pre>{@code
  * List<Card> cards = CardData.getMajorArcanaCards(context);
  * Card foolCard = cards.get(0); // The Fool (card #0)
- * }</pre>
- * 
- * @author YourName
+ * }**</pre>
+ *
+ * @author Chanjuan Li
  * @version 1.0
- * @since API level 1
- * 
  * @see Card
  * @see android.content.Context
  * @see com.example.finalproject_tarrotcardreading.R.string
  * @see com.example.finalproject_tarrotcardreading.R.drawable
+ * @since API level 1
  */
 public class CardData {
-    
+
     /**
      * Creates and returns a complete list of all 22 Major Arcana tarot cards.
-     * 
+     * <p>
      * This method constructs Card objects for all Major Arcana cards, numbered
      * from 0 (The Fool) to 21 (The World). Each card is created with:
      * - Proper sequential numbering (0-21)
@@ -40,22 +39,13 @@ public class CardData {
      * - Corresponding drawable resource IDs for card images
      * - Localized upright and reversed meanings
      * - Localized descriptions and advice
-
-     * 
-     * @param context The Android Context used to access string resources
-     *                for localized card names, meanings, and descriptions.
-     *                Must not be null.
-     * 
-     * @return A List containing all 22 Major Arcana Card objects in sequential
-     *         order (0-21). The list is guaranteed to contain exactly 22 cards.
-     *         Returns a new ArrayList instance on each call.
-     * 
-     * @throws NullPointerException if the context parameter is null
-     * @throws android.content.res.Resources.NotFoundException if any required
-     *         string or drawable resources are missing from the app resources
-     * 
-     * @see Card#Card(String, String, int, String, String, String)
-     * @see Context#getString(int)
+     *
+     * @param context The Android Context used to access string resources                for localized card names, meanings, and descriptions.                Must not be null.
+     * @return A List containing all 22 Major Arcana Card objects in sequential         order (0-21). The list is guaranteed to contain exactly 22 cards.         Returns a new ArrayList instance on each call.
+     * @throws NullPointerException                            if the context parameter is null
+     * @throws android.content.res.Resources.NotFoundException if any required         string or drawable resources are missing from the app resources
+     * @see Card#Card(String, String, int, String, String, String) Card#Card(String, String, int, String, String, String)Card#Card(String, String, int, String, String, String)
+     * @see Context#getString(int) Context#getString(int)Context#getString(int)
      */
     public static List<Card> getMajorArcanaCards(Context context) {
         // Initialize ArrayList with expected capacity for performance

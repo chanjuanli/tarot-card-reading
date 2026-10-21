@@ -6,16 +6,16 @@ import java.util.Locale;
 
 /**
  * Helper class for managing application localization and language switching.
- * 
+ * <p>
  * This utility class provides methods to:
  * - Set and persist user-selected language preferences
  * - Create context with specific locale configurations
  * - Retrieve saved language settings from SharedPreferences
- * 
+ * <p>
  * The class uses SharedPreferences to store the user's language choice
  * and applies it by creating a new Configuration context.
- * 
- * @author YourName
+ *
+ * @author Chanjuan Li
  * @version 1.0
  * @since API level 1
  */
@@ -33,18 +33,14 @@ public class LocaleHelper {
 
     /**
      * Sets the application locale to the specified language and saves the preference.
-     * @param context  The application context used to access SharedPreferences
-     *                and create the new configuration context
-     * @param language The language code (e.g., "en" for English, "zh" for Chinese)
-     *                Must be a valid ISO 639-1 language code
-     * @return A new Context instance configured with the specified locale.
-     *         This context should be used for accessing localized resources.
-     * 
+     *
+     * @param context  The application context used to access SharedPreferences                and create the new configuration context
+     * @param language The language code (e.g., "en" for English, "zh" for Chinese)                Must be a valid ISO 639-1 language code
+     * @return A new Context instance configured with the specified locale.         This context should be used for accessing localized resources.
      * @throws IllegalArgumentException if the language code is invalid
-     * 
      * @see Locale
      * @see Configuration
-     * @see Context#createConfigurationContext(Configuration)
+     * @see Context#createConfigurationContext(Configuration) Context#createConfigurationContext(Configuration)Context#createConfigurationContext(Configuration)
      */
     public static Context setLocale(Context context, String language) {
         // Save user language preference to SharedPreferences for persistence
@@ -70,17 +66,15 @@ public class LocaleHelper {
 
     /**
      * Retrieves the user's saved language preference from SharedPreferences.
-     * 
+     * <p>
      * This method checks SharedPreferences for a previously saved language setting.
      * If no language has been explicitly set by the user, it returns the
      * system's default language as a fallback.
-     * 
+     *
      * @param context The application context used to access SharedPreferences
-     * @return The saved language code as a String (e.g., "en", "zh").
-     *         Returns the system default language if no preference is saved.
-     * 
-     * @see Locale#getDefault()
-     * @see android.content.SharedPreferences#getString(String, String)
+     * @return The saved language code as a String (e.g., "en", "zh").         Returns the system default language if no preference is saved.
+     * @see Locale#getDefault() Locale#getDefault()Locale#getDefault()
+     * @see android.content.SharedPreferences#getString(String, String) android.content.SharedPreferences#getString(String, String)android.content.SharedPreferences#getString(String, String)
      */
     public static String getSavedLanguage(Context context) {
         return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)

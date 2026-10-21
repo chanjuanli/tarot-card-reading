@@ -16,18 +16,17 @@ import com.example.finalproject_tarrotcardreading.data.Card;
 
 /**
  * Fragment for displaying the final tarot card reading results.
- * 
+ * <p>
  * This fragment presents the interpretation of three selected tarot cards,
  * showing their images, names, meanings (both upright and reversed), and
  * detailed descriptions. It serves as the final destination in the tarot
  * reading flow where users receive their personalized card interpretations.
- * 
- * @author YourName
+ *
+ * @author Chanjuan Li
  * @version 1.0
- * @since API level 1
- * 
  * @see Card
  * @see androidx.navigation.fragment.NavHostFragment
+ * @since API level 1
  */
 public class ReadingFragment extends Fragment {
     
@@ -42,7 +41,7 @@ public class ReadingFragment extends Fragment {
 
     /**
      * Required empty public constructor for Fragment instantiation.
-     * 
+     * <p>
      * This constructor is required by the Android framework for proper
      * fragment lifecycle management and recreation.
      */

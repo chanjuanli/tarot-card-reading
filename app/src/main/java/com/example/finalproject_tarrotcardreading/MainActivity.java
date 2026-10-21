@@ -7,17 +7,16 @@ import androidx.activity.EdgeToEdge;
 
 /**
  * Main Activity for the Tarot Card Reading application.
- * 
+ * <p>
  * This activity serves as the entry point and container for the application's
  * fragment-based navigation system. It handles language localization and
  * provides the main UI structure using EdgeToEdge display.
- * 
- * @author YourName
+ *
+ * @author Chanjuan Li
  * @version 1.0
- * @since API level 1
- * 
  * @see com.example.finalproject_tarrotcardreading.data.LocaleHelper
  * @see androidx.appcompat.app.AppCompatActivity
+ * @since API level 1
  */
 public class MainActivity extends AppCompatActivity {
     

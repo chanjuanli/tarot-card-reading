@@ -35,7 +35,7 @@ import java.util.Random;
 
 /**
  * Fragment responsible for the card shuffling animation and selection process.
-
+ * <p>
  * Key Features:
  * - Complex multi-phase shuffle animation with spiral movements
  * - Three-row card layout for optimal selection experience
@@ -43,20 +43,19 @@ import java.util.Random;
  * - Dynamic progress tracking for card selection (0-3 cards)
  * - Seamless navigation to card reveal and reading phases
  * - Responsive layout adapting to different screen sizes
- * 
+ * <p>
  * Animation Phases:
  * 1. Initial shuffle with spiral movements and rotations
  * 2. Gathering phase with cards converging to center
  * 3. Fade-out and transition to selection layout
  * 4. Three-row card spread presentation
- * 
- * @author YourName
+ *
+ * @author Chanjuan Li
  * @version 1.0
- * @since API level 1
- * 
  * @see Card
  * @see CardData
  * @see androidx.navigation.fragment.NavHostFragment
+ * @since API level 1
  */
 public class ShuffleFragment extends Fragment {
 
@@ -86,7 +85,7 @@ public class ShuffleFragment extends Fragment {
 
     /**
      * Required empty public constructor for Fragment instantiation.
-     * 
+     * <p>
      * This constructor is required by the Android framework for proper
      * fragment lifecycle management and recreation.
      */
@@ -96,7 +95,7 @@ public class ShuffleFragment extends Fragment {
 
     /**
      * Factory method to create a new instance of ShuffleFragment with parameters.
-     * 
+     * <p>
      * This method follows the recommended pattern for fragment creation
      * with arguments, providing future extensibility for customization.
      *

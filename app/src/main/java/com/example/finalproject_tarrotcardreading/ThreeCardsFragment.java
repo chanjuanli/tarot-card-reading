@@ -19,22 +19,21 @@ import com.example.finalproject_tarrotcardreading.data.Card;
 
 /**
  * Fragment responsible for revealing the three selected tarot cards with dramatic flip animations.
- * 
+ * <p>
  * Key Features:
  * - Sequential 3D flip animations for each of the three cards
  * - Seamless transition from card backs to actual tarot card faces
  * - Navigation integration to proceed to the interpretation phase
  * - Comprehensive logging for debugging card data flow
- * 
- * @author YourName
+ *
+ * @author Chanjuan Li
  * @version 1.0
- * @since API level 1
- * 
  * @see Card
  * @see android.animation.ObjectAnimator
  * @see androidx.navigation.fragment.NavHostFragment
  * @see ShuffleFragment
  * @see ReadingFragment
+ * @since API level 1
  */
 public class ThreeCardsFragment extends Fragment {
 
@@ -49,7 +48,7 @@ public class ThreeCardsFragment extends Fragment {
 
     /**
      * Required empty public constructor for Fragment instantiation.
-     * 
+     * <p>
      * This constructor is required by the Android framework for proper
      * fragment lifecycle management and recreation during configuration changes.
      */
@@ -62,11 +61,9 @@ public class ThreeCardsFragment extends Fragment {
      *
      * @param cards Array of exactly three Card objects selected by the user
      * @return A new instance of ThreeCardsFragment configured with the provided cards
-     * 
      * @throws IllegalArgumentException if cards array is null or not exactly 3 elements
-     * 
      * @see Card
-     * @see Bundle#putParcelableArray(String, android.os.Parcelable[])
+     * @see Bundle#putParcelableArray(String, android.os.Parcelable[]) Bundle#putParcelableArray(String, android.os.Parcelable[])Bundle#putParcelableArray(String, android.os.Parcelable[])
      */
     public static ThreeCardsFragment newInstance(Card[] cards) {
         ThreeCardsFragment fragment = new ThreeCardsFragment();

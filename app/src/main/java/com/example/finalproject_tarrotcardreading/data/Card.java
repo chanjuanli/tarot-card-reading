@@ -7,21 +7,19 @@ import androidx.room.PrimaryKey;
 
 /**
  * Represents a Tarot card entity with all its properties and meanings.
- * 
+ * <p>
  * This class serves as both a Room database entity and a Parcelable object
  * for efficient data transfer between Android components. Each card contains
  * information about its appearance, meanings, and current orientation.
- * 
+ * <p>
  * The Card class implements Parcelable to allow passing card objects between
  * Activities and Fragments through Intent bundles and navigation arguments.
  *
- * 
- * @author YourName
+ * @author Chanjuan Li
  * @version 1.0
- * @since API level 1
- * 
  * @see androidx.room.Entity
  * @see android.os.Parcelable
+ * @since API level 1
  */
 @Entity(tableName = "cards")
 public class Card implements Parcelable {
@@ -80,10 +78,10 @@ public class Card implements Parcelable {
 
     /**
      * Constructs a new Card with the specified properties.
-     * 
+     * <p>
      * This is the main constructor used to create card instances with
      * all necessary tarot card information.
-     * 
+     *
      * @param number          The card's number or position in the deck (e.g., "0", "1", "21")
      * @param name            The full name of the card (e.g., "The Fool", "The Magician")
      * @param imageResource   Android resource ID for the card's image drawable
@@ -106,12 +104,11 @@ public class Card implements Parcelable {
 
     /**
      * Constructs a Card object from a Parcel for deserialization.
-     * 
+     * <p>
      * The order of reading must match the order of writing in writeToParcel().
-     * 
+     *
      * @param in The Parcel containing the serialized Card data
-     * 
-     * @see #writeToParcel(Parcel, int)
+     * @see #writeToParcel(Parcel, int) #writeToParcel(Parcel, int)#writeToParcel(Parcel, int)
      */
     protected Card(Parcel in) {
         id = in.readInt();
@@ -188,7 +185,7 @@ public class Card implements Parcelable {
 
     /**
      * Gets the unique database identifier for this card.
-     * 
+     *
      * @return The card's database ID, or 0 if not yet persisted
      */
     public int getId() {
@@ -197,7 +194,7 @@ public class Card implements Parcelable {
 
     /**
      * Sets the unique database identifier for this card.
-     * 
+     *
      * @param id The database ID to assign to this card
      */
     public void setId(int id) {
@@ -206,7 +203,7 @@ public class Card implements Parcelable {
 
     /**
      * Gets the card's number or position in the tarot deck.
-     * 
+     *
      * @return The card number as a String (e.g., "0", "1", "21")
      */
     public String getNumber() {
@@ -215,7 +212,7 @@ public class Card implements Parcelable {
 
     /**
      * Sets the card's number or position in the tarot deck.
-     * 
+     *
      * @param number The card number to set (e.g., "0" for The Fool)
      */
     public void setNumber(String number) {
@@ -224,7 +221,7 @@ public class Card implements Parcelable {
 
     /**
      * Gets the full name of the tarot card.
-     * 
+     *
      * @return The card's name (e.g., "The Fool", "The Magician")
      */
     public String getName() {
@@ -233,7 +230,7 @@ public class Card implements Parcelable {
 
     /**
      * Sets the full name of the tarot card.
-     * 
+     *
      * @param name The card name to set
      */
     public void setName(String name) {
@@ -242,7 +239,7 @@ public class Card implements Parcelable {
 
     /**
      * Gets the Android resource ID for the card's image.
-     * 
+     *
      * @return The drawable resource ID for displaying the card image
      */
     public int getImageResource() {
@@ -251,7 +248,7 @@ public class Card implements Parcelable {
 
     /**
      * Sets the Android resource ID for the card's image.
-     * 
+     *
      * @param imageResource The drawable resource ID to set
      */
     public void setImageResource(int imageResource) {
@@ -260,7 +257,7 @@ public class Card implements Parcelable {
 
     /**
      * Gets the interpretation for when the card appears upright.
-     * 
+     *
      * @return The upright meaning text containing positive interpretations
      */
     public String getUprightMeaning() {
@@ -269,7 +266,7 @@ public class Card implements Parcelable {
 
     /**
      * Sets the interpretation for when the card appears upright.
-     * 
+     *
      * @param uprightMeaning The upright meaning text to set
      */
     public void setUprightMeaning(String uprightMeaning) {
@@ -278,7 +275,7 @@ public class Card implements Parcelable {
 
     /**
      * Gets the interpretation for when the card appears reversed.
-     * 
+     *
      * @return The reversed meaning text containing alternative interpretations
      */
     public String getReversedMeaning() {
@@ -287,7 +284,7 @@ public class Card implements Parcelable {
 
     /**
      * Sets the interpretation for when the card appears reversed.
-     * 
+     *
      * @param reversedMeaning The reversed meaning text to set
      */
     public void setReversedMeaning(String reversedMeaning) {
@@ -296,7 +293,7 @@ public class Card implements Parcelable {
 
     /**
      * Gets the detailed description or advice for this card.
-     * 
+     *
      * @return The description text providing context and guidance
      */
     public String getDescription() {
@@ -305,7 +302,7 @@ public class Card implements Parcelable {
 
     /**
      * Sets the detailed description or advice for this card.
-     * 
+     *
      * @param description The description text to set
      */
     public void setDescription(String description) {
@@ -314,7 +311,7 @@ public class Card implements Parcelable {
 
     /**
      * Checks if the card is currently in reversed orientation.
-     * 
+     *
      * @return true if the card is reversed/upside down, false if upright
      */
     public boolean isReversed() {
@@ -323,7 +320,7 @@ public class Card implements Parcelable {
 
     /**
      * Sets whether the card is in reversed orientation.
-     * 
+     *
      * @param reversed true to set the card as reversed, false for upright
      */
     public void setReversed(boolean reversed) {
@@ -332,10 +329,9 @@ public class Card implements Parcelable {
 
     /**
      * Gets the image resource ID for this card.
-     * 
+     *
      * @return The drawable resource ID for the card's image
-     * 
-     * @see #getImageResource()
+     * @see #getImageResource() #getImageResource()#getImageResource()
      */
     public int getImageResId() {
         return imageResource;
