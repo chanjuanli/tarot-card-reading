@@ -2,7 +2,7 @@
 
 A native Android app that turns a three-card tarot reading into a visual, interactive journey: shuffle the deck, choose three cards, reveal them, and explore their meanings.
 
-Built by **Chanjuan Li** in 2025 as an Android programming course project.
+An Android programming course project completed in 2025.
 
 ## Shuffle animation
 
