@@ -2,7 +2,7 @@
 
 A native Android app that turns a three-card tarot reading into a visual, interactive journey: shuffle the deck, choose three cards, reveal them, and explore their meanings.
 
-Developed by **Chanjuan Li** as an Android programming course project at the **University of Eastern Finland** in 2025. This repository presents the source code and the running application.
+Built by **Chanjuan Li** in 2025 as an Android programming course project.
 
 ## Shuffle animation
 
@@ -29,6 +29,18 @@ Screenshots captured from the app running on an Android API 35 emulator.
 - Card names, upright meanings, reversed meanings, and descriptions.
 - **English and Simplified Chinese**, with the chosen language remembered between launches.
 - Offline operation; no account, API key, or backend is required.
+
+## Development process
+
+The development history follows the app from its initial setup through:
+
+1. Card data, illustrations, and localized string resources.
+2. The welcome screen and visual styling.
+3. Custom shuffle animations and card-selection feedback.
+4. Card reveals, interpretation screens, and fragment navigation.
+5. English / Chinese switching, documentation, and class diagrams.
+
+[Browse the development commits](https://github.com/chanjuanli/tarot-card-reading/commits/main).
 
 ## Try the app
 
@@ -83,13 +95,13 @@ This is a course project focused on Android UI, animation, localization, and nav
 
 The implemented card data comes from `CardData` and Android resources. There is no Room-backed reading history in this version.
 
-## Development documents
+## Project documentation
 
-- [Class overview](documentation/javadoc/index.html) — a manually written HTML reference from the course submission.
+- [Class overview](documentation/javadoc/index.html) — a manually written HTML reference.
 - [Class diagram source](TarotAppClassDiagram_EN.puml) — PlantUML diagram.
-- [Original project proposal](documentation/Simple%20Tarot%20Card%20Reader%20App.pdf).
-- [Original course report](documentation/Project%20document_chanjuanli.pdf).
+- [Design proposal](documentation/Simple%20Tarot%20Card%20Reader%20App.pdf).
+- [Development report](documentation/Project%20document_chanjuanli.pdf).
 
-The PDFs are preserved as historical course documents. Their descriptions of planned data storage and navigation may differ from the final code; the implementation and setup described above reflect the current source.
+The PDFs record the original design and development process. The source code and setup instructions above describe the current implementation.
 
 Portfolio: [chanjuanli.com](https://chanjuanli.com/)
