@@ -4,6 +4,14 @@ A native Android app that turns a three-card tarot reading into a visual, intera
 
 Developed by **Chanjuan Li** as an Android programming course project at the **University of Eastern Finland** in 2025. This repository presents the source code and the running application.
 
+## Shuffle animation
+
+<img src="docs/images/shuffle-demo.gif" width="300" alt="Live app recording showing the tarot cards moving through spiral and gathering phases before the selection layout appears">
+
+[Watch the full-resolution recording (1080 × 2400)](docs/images/shuffle-demo.mp4).
+
+The shuffle is a custom animation captured from the running app. In [ShuffleFragment](app/src/main/java/com/example/finalproject_tarrotcardreading/ShuffleFragment.java), `ObjectAnimator` and `AnimatorSet` coordinate 15 card views across three spiral movement phases and a final gathering phase. When the animation finishes, the app removes those animation views and displays the 22-card selection layout.
+
 ## Screenshots
 
 | Welcome | Choose three cards | Reveal | Read the meanings |
