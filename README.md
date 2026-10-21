@@ -109,4 +109,4 @@ The implemented card data comes from `CardData` and Android resources. There is 
 
 The design proposal records the early plan. The source code and setup instructions above describe the current implementation.
 
-Portfolio: [chanjuanli.com](https://chanjuanli.com/)
+
