@@ -89,6 +89,12 @@ gradlew.bat assembleDebug
 
 Navigation uses AndroidX Fragments and the Navigation component. Card objects travel between screens through a `Bundle` using `Parcelable`. Localized text is stored in Android string resources; the language setting uses `SharedPreferences`.
 
+### Interaction implementation
+
+- **Card spread:** after the shuffle finishes and the container is measured, the 22 cards are arranged in three centered rows of 8, 7, and 7. Card sizes are calculated from the available width while preserving their aspect ratio.
+- **Selection feedback:** selected cards scale to 1.08 times their size and gain a glow. Tapping them again deselects them; the continue button becomes available when exactly three cards are selected.
+- **Card reveal:** each card rotates out to 90 degrees, switches from the card back to its illustration, then rotates into view. Staggered starts reveal the three cards in sequence.
+
 ## Project scope
 
 This is a course project focused on Android UI, animation, localization, and navigation. It currently supports one three-card flow using the Major Arcana. Saving previous readings and additional spreads are possible future extensions.
@@ -100,8 +106,7 @@ The implemented card data comes from `CardData` and Android resources. There is 
 - [Class overview](documentation/javadoc/index.html) — a manually written HTML reference.
 - [Class diagram source](TarotAppClassDiagram_EN.puml) — PlantUML diagram.
 - [Design proposal](documentation/Simple%20Tarot%20Card%20Reader%20App.pdf).
-- [Development report](documentation/Project%20document_chanjuanli.pdf).
 
-The PDFs record the original design and development process. The source code and setup instructions above describe the current implementation.
+The design proposal records the early plan. The source code and setup instructions above describe the current implementation.
 
 Portfolio: [chanjuanli.com](https://chanjuanli.com/)
